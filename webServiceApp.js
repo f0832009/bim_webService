@@ -31,6 +31,6 @@ webServiceApp.use(bodyParser.urlencoded({ extended: false }));
 webServiceApp.use(expressValidator());
 webServiceApp.use(cookieParser());    
 
-webServiceApp.use(urljoin(version, mainRoute, 'spaces'), spacesAPI());
+webServiceApp.use(urljoin(mainRoute, version, 'spaces'), spacesAPI());
 
 module.exports = webServiceApp;
