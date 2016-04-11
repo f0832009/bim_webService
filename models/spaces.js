@@ -32,8 +32,8 @@ SpacesSchema.statics = {
         var promise = new mongoose.Promise;
         if (callback) promise.addBack(callback);
 
-        var model = this.model('Space');
-        model.find({ childType: childType }).exec(function(err, docs){
+        
+        this.find({ childType: childType }).exec(function(err, docs){
             if (err || !docs)
                 promise.error(err);
             async.concat(docs, function(doc, callback){
@@ -61,7 +61,7 @@ SpacesSchema.statics = {
             nodeId = mongoose.Types.ObjectId(nodeId);
         }
         // var self = this.constructor;
-        this.model('Space').findOne({ _id: nodeId }).exec(function(err, doc){
+        this.findOne({ _id: nodeId }).exec(function(err, doc){
             if(err)
                 promise.error(err);
             else        
@@ -70,9 +70,8 @@ SpacesSchema.statics = {
         return promise; 
     },
     
-    GetChildTypes: function(callback){
-        var self = this;
-        return self.constructor.find({childType: { $exists: true }}).distinct('childType').exec(callback);
+    GetChildTypes: function(callback){        
+        return this.find({childType: { $exists: true }}).distinct('childType').exec(callback);
     }
 }
 
