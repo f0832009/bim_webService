@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var os = require('os');
 // var Space = mongoose.model('Space');
-var Space = rootRequire('models/Spaces');
+var Space = require('../models/Spaces');
 var validator = require('express-validator');
 var util = require('util');
 var async = require('async');
@@ -63,11 +63,7 @@ module.exports = function(){
             return;
         }                
         var childType = req.query.childType;        
-             
-        // Space.GetNodesByChildType(childType, function(err, result){
-        //     if(err) return console.error(err);
-        //     res.end(JSON.stringify(result));
-        // })
+
         Space.GetNodesByChildType(childType).then(function(result){
             res.end(JSON.stringify(result));
         })
@@ -90,7 +86,7 @@ module.exports = function(){
         })        
     })
     
-    router.get('/:nodeId/resourcePaths', function(req, res){        
+    router.get('/resourcePath/:nodeId/', function(req, res){        
         var id = mongoose.Types.ObjectId(req.params.nodeId);
 
         req.assert('limit', 'limit error').optional().isInt();
