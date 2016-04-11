@@ -18,7 +18,8 @@
     "mongoose-materialized": "^0.1.8",
     "morgan": "~1.6.1",
     "node-restful": "^0.2.5",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "url-join" : "~1.1.0"
   },
   "author": {
     "name": "kevin ger"

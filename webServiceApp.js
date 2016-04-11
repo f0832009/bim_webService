@@ -7,17 +7,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+var join = require('url-join');
 
 var mongo_config = require('./config/mongo-config');
-var dbConnector = require('./webService/dbConnector');
+var dbConnector = require('dbConnector');
 var spacesAPI = require('./webService/spacesAPI');
 var env = process.env.NODE_ENV || 'development';
 
 var webServiceApp = express();
 
 var version = 'v1';
-var mainRoute = '/api';
-var prefix = version + mainRoute;
+var mainRoute = 'api';
 
 var connector = new dbConnector(mongo_config);
 
@@ -31,6 +31,6 @@ webServiceApp.use(bodyParser.urlencoded({ extended: false }));
 webServiceApp.use(expressValidator());
 webServiceApp.use(cookieParser());    
 
-webServiceApp.use(prefix + '/Spaces', spacesAPI());
+webServiceApp.use(urljoin(version, mainRoute, 'spaces'), spacesAPI());
 
 module.exports = webServiceApp;
