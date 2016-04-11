@@ -10,7 +10,7 @@ var expressValidator = require('express-validator');
 var join = require('url-join');
 
 var mongo_config = require('./config/mongo-config');
-var dbConnector = require('dbConnector');
+var dbConnector = require('./dbConnector');
 var spacesAPI = require('./webService/spacesAPI');
 var env = process.env.NODE_ENV || 'development';
 
