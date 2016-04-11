@@ -21,7 +21,9 @@ var prefix = version + mainRoute;
 
 var connector = new dbConnector(mongo_config);
 
-connector.initializeDb();
+connector.initializeDb(function(){
+    
+});
 
 if (env !== 'test') webServiceApp.use(logger('dev'));
 webServiceApp.use(bodyParser.json({limit: '50mb'}));
