@@ -7,7 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-var join = require('url-join');
+var urljoin = require('url-join');
 
 var mongo_config = require('./config/mongo-config');
 var dbConnector = require('./dbConnector');
@@ -17,7 +17,7 @@ var env = process.env.NODE_ENV || 'development';
 var webServiceApp = express();
 
 var version = 'v1';
-var mainRoute = 'api';
+var mainRoute = '/api';
 
 var connector = new dbConnector(mongo_config);
 

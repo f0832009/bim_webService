@@ -23,10 +23,10 @@ SpacesSchema.statics.GetChildTypes = function(callback){
 
 SpacesSchema.statics = {
     /**
-   * Find article by id
+   * Find node by childType
    *
-   * @param {ObjectId} id
-   * @api private
+   * @param {string} childType
+   * @api
    */
   GetNodesByChildType: function(childType, callback){
         var promise = new mongoose.Promise;
@@ -68,6 +68,11 @@ SpacesSchema.statics = {
                 promise.complete(doc);
         });        
         return promise; 
+    },
+    
+    GetChildTypes: function(callback){
+        var self = this;
+        return self.constructor.find({childType: { $exists: true }}).distinct('childType').exec(callback);
     }
 }
 
