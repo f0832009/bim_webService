@@ -11,7 +11,7 @@ var join = require('url-join');
 
 var mongo_config = require('./config/mongo-config');
 var dbConnector = require('./dbConnector');
-var spacesAPI = require('./webService/spacesAPI');
+var spacesAPI = require('./webService/spaces');
 var env = process.env.NODE_ENV || 'development';
 
 var webServiceApp = express();
