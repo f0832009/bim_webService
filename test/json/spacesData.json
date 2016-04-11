@@ -1,0 +1,35 @@
+{
+    "name": "管道",
+    "resourcePath": "",
+    "remark": "",
+    "childType": "區段",
+    "children": [{
+        "name": "幹管",
+        "resourcePath": "./data/幹管",
+        "remark": "",       
+        "childType": "里程",
+        "children":[{
+            "name": "main",
+            "resourcePath": "./data/里程/main",
+            "remark": "0-100"       
+        },{
+            "name": "sub",
+            "resourcePath": "./data/里程/sub",
+            "remark": "100-200"            
+        }]
+    },{
+        "name": "連絡通道",
+        "resourcePath": "./data/連絡通道",
+        "remark": "",   
+        "childType": "里程",
+        "children": [{
+            "name": "main",
+            "resourcePath": "./data/連絡通道/AR",
+            "remark": "500-550"
+        },{
+            "name": "MEP",
+            "resourcePath": "./data/連絡通道/MEP",
+            "remark": "550-600"
+        }]    
+    }]    
+}
