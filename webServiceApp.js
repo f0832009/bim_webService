@@ -8,14 +8,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 
-var mongo_config = rootRequire('config/mongo-config');
-var dbConnector = rootRequire('routes/dbConnector');
-var spacesAPI = require('./spacesAPI');
+var mongo_config = require('./config/mongo-config');
+var dbConnector = require('./webService/dbConnector');
+var spacesAPI = require('./webService/spacesAPI');
 var env = process.env.NODE_ENV || 'development';
-// var categoryAPI = require('./routes/categoryAPI');
-// var featuresAPI = require('./routes/featuresAPI');
-// var facilitiesAPI = require('./routes/facilitiesAPI');
-// var STRColumnAPI = require('./routes/STRColumnAPI');
 
 var webServiceApp = express();
 

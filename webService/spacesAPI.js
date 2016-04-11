@@ -81,22 +81,7 @@ module.exports = function(){
         if (errors) {
             res.end('There have been validation errors: ' + util.inspect(errors), 400);
             return;
-        }               
-        // var limit = parseInt(req.query.limit)  
-        // Space.findOne({ _id: id }).exec().then(function(doc){            
-        //     if(limit){
-        //         doc.getDescendants({
-        //             limit: limit
-        //         }).then(function(docs){
-        //             res.end(JSON.stringify(docs));
-        //         })
-        //     }
-        //     else{
-        //         doc.getChildren().then(function(docs){
-        //             res.end(JSON.stringify(docs));
-        //         })
-        //     }
-        // })
+        }
         
         Space.GetNode(req.params.nodeId, function(err, doc){
             doc.getNextDepth(function(err, docs){
@@ -114,7 +99,9 @@ module.exports = function(){
             res.end('There have been validation errors: ' + util.inspect(errors), 400);
             return;
         }       
-        
+        /**
+         * Get Server IPAddress
+         */
         var interfaces = os.networkInterfaces();
         var addresses = '';
         for (var i in interfaces) {
@@ -132,36 +119,6 @@ module.exports = function(){
             res.send(resourcePath);
         })
             
-
-                
-        // var limit = parseInt(req.query.limit)  
-        // Space.findOne({ _id: id }).exec().then(function(doc){            
-        //     if(limit){
-        //         doc.getDescendants({
-        //             limit: limit,
-        //             fields: { resourcePath: 1, _id : 0 }
-        //         }).then(function(docs){
-        //             async.map(docs, function(doc, callback){
-        //                 var replaced = doc.resourcePath.replace('.', addresses)
-        //                 callback(null, replaced)
-        //             },function(err, result){
-        //                 res.end(JSON.stringify(result));
-        //             })                    
-        //         })
-        //     }
-        //     else{
-        //         doc.getChildren({
-        //             fields: { resourcePath: 1, _id : 0 }
-        //         }).then(function(docs){
-        //             async.map(docs, function(doc, callback){
-        //                 var replaced = doc.resourcePath.replace('.', addresses)
-        //                 callback(null, replaced)
-        //             },function(err, result){
-        //                 res.end(JSON.stringify(result));
-        //             })    
-        //         })
-        //     }
-        // })
         
     })
     
@@ -177,10 +134,7 @@ module.exports = function(){
     })
     
     router.get('/node/:nodeId', function(req, res){        
-        // var id = mongoose.Types.ObjectId(req.params.nodeId);
-        // Space.findOne({ _id: id }).exec().then(function(doc){
-        //     res.end(JSON.stringify(doc));
-        // })
+
         Space.GetNode(req.params.nodeId, function(err, doc){
             var reslut = {
                 id: doc._id,                
@@ -196,9 +150,7 @@ module.exports = function(){
         Space.GetFullTree().then(function(tree){
             res.end(JSON.stringify(tree));
         })        
-    })
-    
-    
+    })  
     
     //query spacename
     router.get('/spaceName/:spaceName', function(req, res){
@@ -246,12 +198,7 @@ module.exports = function(){
     })   
     
     //get all childtype
-    router.get('/childTypes', function(req, res, next){        
-        // Space.find({childType: { $exists: true }}).distinct('childType').exec(function(err, docs){
-        //     if(err) return console.error(err);   
-               
-        //     res.end(JSON.stringify(docs));
-        // })        
+    router.get('/childTypes', function(req, res, next){          
         
         Space.GetChildTypes(function(err, docs){
             if(err) return console.error(err);   
