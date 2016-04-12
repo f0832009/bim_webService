@@ -9,6 +9,7 @@ An package for BIMFM_WebService.
     $ npm install              
 
 ## Usage
+
 main function is an express app, can be use by your main app, and the express route is implement in REST.
 
 ```js
@@ -16,11 +17,27 @@ var webServiceApp = require('bim-webservice');
 
 app.use(webServiceApp);
 ```  
+
+it require mongodb running instance, mongodb connection config can be edited in config folder.
+
+defalut config:
+```js
+  user: '',
+  pass: '',
+  dbhost: 'localhost',
+  port: 27017,
+  db:   'mydb',
+  host: '/node/mongo',
+  models: '/models' 
+ ```  
+
 RESTful API:
 
     POST /resources
 -   Post data to Spaces in JSON.
-exsample:
+
+post data example:
+
 ```json
 {
     "name": "HTPC",
@@ -58,13 +75,71 @@ exsample:
     }]    
 }
 ```  
+    GET api/v1/originJsonData
+    
+-   Get original tree structure data
+    
     GET api/v1/spaces
--   Return all data from Spaces
+    
+-   Get all data from spaces colection.
 
+    GET api/v1/spaces/roots
+    
+-   Get roots node from spaces colection.
+
+    GET api/v1/spaces/:nodeId
+    
+    parameter nodeId:mongodb objectId(12-byte hexadecimal value)
+
+-   Get any node in spaces collection by id field
+
+example:
+    GET api/v1/spaces/56f28e13877f2d2080000002
+    
+response data example:
+
+```json
+{
+    "id": "56f28e13877f2d2080000002",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "1F"
+}
+```    
     GET api/v1/spaces/childTypes
+    
+-   Return all childType value in spaces collection
+
+response data example:
+```json
+[
+    "Levels",
+    "Layers"
+]
+``` 
+    
+    GET api/v1/spaces/children?childType={childTypeName}
+    
+    query parameter childTypeName:string
+    
+-   Return specify node by childTypeName
+
+example:
+    GET api/v1/spaces/children?childType=Levels
+
+response data example:
+
+```json
+{
+    "id": "56f28e13877f2d2080000002",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "1F"
+}
+```  
+    
 
     DELETE /resources
--   Remove all data 
+    
+-   Remove all data.
 
 
 ## Written by

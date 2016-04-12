@@ -129,7 +129,7 @@ module.exports = function(){
         })
     })
     
-    router.get('/node/:nodeId', function(req, res){        
+    router.get('/:nodeId', function(req, res){        
 
         Space.GetNode(req.params.nodeId, function(err, doc){
             var reslut = {
@@ -175,7 +175,6 @@ module.exports = function(){
                 
         Space.findOne({ parentId: null }).exec(function(err, doc){
             if(err) return console.error(err);
-            // console.log(doc.getChildCondition());
             doc.getDescendants({ limit: parseInt(req.query.limit), skip: parseInt(req.query.skip) },function(err, docs){                 
                 if(err) return console.error(err);                
                 res.end(JSON.stringify(docs));

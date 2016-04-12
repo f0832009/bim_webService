@@ -5,8 +5,7 @@ var config = {
   port: 27017,
   db:   'mydb',
   host: '/node/mongo',
-  materials: 'mongo.materials',
-  models: 'mongo.models'
+  models: '/models'
 }
 
 module.exports = config;
