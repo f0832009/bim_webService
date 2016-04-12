@@ -20,7 +20,7 @@ RESTful API:
 
     POST /resources
 -   Post data to Spaces in JSON.
-expsample:
+exsample:
 ```json
 {
     "name": "HTPC",
@@ -58,10 +58,10 @@ expsample:
     }]    
 }
 ```  
-    GET /Spaces
+    GET api/v1/spaces
 -   Return all data from Spaces
 
-
+    GET api/v1/spaces/childTypes
 
     DELETE /resources
 -   Remove all data 
