@@ -10,13 +10,6 @@ var SpacesSchema = new Schema({
     remark: String
 })
 
-SpacesSchema.plugin(materializedPlugin);
-
-SpacesSchema.statics.GetChildTypes = function(callback){    
-    return this.model('Space').find({childType: { $exists: true }}).distinct('childType').exec(callback);
-}
-
-
 /** 
  * static methods
 */
@@ -75,7 +68,7 @@ SpacesSchema.statics = {
     }
 }
 
-SpacesSchema.methods.getNextDepth = function(callback){
+SpacesSchema.methods.getNextDepthNode = function(callback){
     var promise = new mongoose.Promise;
     if (callback) promise.addBack(callback);
     
@@ -91,8 +84,29 @@ SpacesSchema.methods.getNextDepth = function(callback){
     return promise;
 }
 
-mongoose.model('Space', SpacesSchema);
+<<<<<<< HEAD
+SpacesSchema.methods.getChildTypes = function(callback){
+    var promise = new mongoose.Promise;
+    if (callback) promise.addBack(callback);   
 
+    var self = this;
+    var regPath = new RegExp(self._id);  
+    self.constructor.distinct('childType',{ path: regPath }).exec(function(err, docs){
+        if(err)
+            promise.error(err);
+        else        
+            promise.complete(docs);
+    })   
+    return promise;
+}
+
+=======
+SpacesSchema.plugin(materializedPlugin);
+mongoose.model('Space', SpacesSchema);
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
+
+SpacesSchema.plugin(materializedPlugin);
+mongoose.model('Space', SpacesSchema);
 var model = mongoose.model('Space');
 
 module.exports = model;

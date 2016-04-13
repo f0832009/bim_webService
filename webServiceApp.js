@@ -14,23 +14,26 @@ var dbConnector = require('./dbConnector');
 var spacesAPI = require('./webService/spaces');
 var env = process.env.NODE_ENV || 'development';
 
-var webServiceApp = express();
-
-var version = 'v1';
-var mainRoute = '/api';
-
-var connector = new dbConnector(mongo_config);
-
-connector.initializeDb(function(){
+module.exports = function(dbConfig){
+    var version = 'v1';
+    var mainRoute = '/api';    
     
-});
+    var dbConfig = dbConfig || require('./config/mongo-config');
+    var connector = new dbConnector(dbConfig);
+    connector.initializeDb(function(){
+        
+    });    
+    var webServiceApp = express();
 
-if (env !== 'test') webServiceApp.use(logger('dev'));
-webServiceApp.use(bodyParser.json({limit: '50mb'}));
-webServiceApp.use(bodyParser.urlencoded({ extended: false }));
-webServiceApp.use(expressValidator());
-webServiceApp.use(cookieParser());    
+    if (env !== 'test') webServiceApp.use(logger('dev'));
+    webServiceApp.use(bodyParser.json({limit: '50mb'}));
+    webServiceApp.use(bodyParser.urlencoded({ extended: false }));
+    webServiceApp.use(expressValidator());
+    webServiceApp.use(cookieParser());    
 
-webServiceApp.use(urljoin(mainRoute, version, 'spaces'), spacesAPI());
+    webServiceApp.use(urljoin(mainRoute, version, 'spaces'), spacesAPI());
+    
+    return webServiceApp;
+}
 
-module.exports = webServiceApp;
+
