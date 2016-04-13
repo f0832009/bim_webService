@@ -67,6 +67,9 @@ module.exports = function(){
 <<<<<<< HEAD
 =======
                     //lack async
+<<<<<<< HEAD
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
+=======
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
                     async.each(children, function(childObject, callback){
                         var t = parentNode.appendChild(childObject).then(function(data){
@@ -76,7 +79,11 @@ module.exports = function(){
                     },function(err){
                         if(err) console.error(err);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         res.end('post success');
+=======
+                        res.end('upload success');
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 =======
                         res.end('upload success');
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
@@ -111,8 +118,11 @@ module.exports = function(){
     //query rule: childType
     router.get('/nodes', function(req, res){
 <<<<<<< HEAD
+<<<<<<< HEAD
         req.assert('spaceType', 'error query').notEmpty();
 =======
+=======
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
         req.assert('childType', 'error query').notEmpty();
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
         
@@ -140,6 +150,7 @@ module.exports = function(){
     })  
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * Get next depth child node from parent node
      * 
@@ -147,6 +158,10 @@ module.exports = function(){
      * @optional query:childNodeName
      */
     router.get('/:nodeId/children', function(req, res){            
+=======
+    router.get('/:nodeId/children', function(req, res){       
+        
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 =======
     router.get('/:nodeId/children', function(req, res){       
         
@@ -240,11 +255,14 @@ module.exports = function(){
                 return res.end('none of path');                
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             var resourcePath = doc.resourcePath.replace('.', address);
             res.end(resourcePath);            
         })                   
 =======
+=======
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
         }        
         Space.GetNode(req.params.nodeId).then(function(doc){
             var resourcePath = doc.resourcePath.replace('.', addresses);
@@ -266,6 +284,7 @@ module.exports = function(){
     })
     
     router.get('/:nodeId', function(req, res, next){
+<<<<<<< HEAD
 <<<<<<< HEAD
         if(req.params.nodeId == 'spacetypes') next();
         else{
@@ -304,6 +323,8 @@ module.exports = function(){
     
 
 =======
+=======
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
         if(req.params.nodeId == 'childtypes') next();
         else{
             Space.GetNode(req.params.nodeId, function(err, doc){
@@ -324,6 +345,10 @@ module.exports = function(){
             res.end(JSON.stringify(docs));
         })
     })       
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
     
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
     

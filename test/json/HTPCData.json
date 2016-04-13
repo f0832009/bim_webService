@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
     "name": "HTPC",
     "resourcePath": "",
@@ -289,6 +290,298 @@
             "remark": ""            
         }]
     }]    
+=======
+{
+    "name": "HTPC",
+    "resourcePath": "",
+    "remark": "",
+    "childType": "Levels",
+    "children": [{
+        "name": "Foundation",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D_View/Foundation/Foundation.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "",
+            "remark": "" 
+        }]
+    },{
+        "name": "B3F",
+        "resourcePath": "",
+        "remark": "",   
+        "childType": "Layers",
+        "children": [{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/B3F/B3F.svf",
+            "remark": ""
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/B3F/B3F.svf",
+            "remark": ""
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/B3F/B3F.svf",
+            "remark": ""
+        }]    
+    },{
+        "name": "B2F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/B2F/B2F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/B2F/B2F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/B2F/B2F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "B1F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/B1F/B1F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/B1F/B1F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/B1F/B1F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "1F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/1F/1F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/1F/1F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/1F/1F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "2F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/2F/2F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/2F/2F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/2F/2F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "3F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/3F/3F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/3F/3F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/3F/3F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "4F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/4F/4F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/4F/4F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/4F/4F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "5F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/5F/5F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/5F/5F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/5F/5F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "6F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/6F/6F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/6F/6F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/6F/6F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "7F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/7F/7F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/7F/7F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/7F/7F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "8F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/8F/8F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/8F/8F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/8F/8F.svf",
+            "remark": "" 
+        }]  
+    },{
+        "name": "9F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/9F/9F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/9F/9F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/9F/9F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "10F",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/10F/10F.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/10F/10F.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/10F/10F.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "PH",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/PH/PH.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/PH/PH.svf",
+            "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/PH/PH.svf",
+            "remark": "" 
+        }]
+    },{
+        "name": "RL",
+        "resourcePath": "",
+        "remark": "",       
+        "childType": "Layers",
+        "children":[{
+            "name": "AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/RL/RL.svf",
+            "remark": ""       
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/RL/RL.svf",
+            "remark": ""            
+        }]
+    }]    
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 =======
 {
     "name": "HTPC",

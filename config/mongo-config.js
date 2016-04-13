@@ -15,6 +15,7 @@ var config = {
   db:   'mydb',
   host: '/node/mongo',
   models: '/models'
+<<<<<<< HEAD
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 }
 //dasd
@@ -30,5 +31,9 @@ var config = {
 //     models: '/models'
 // }
 
+=======
+}
+//dasd
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 
 module.exports = config;

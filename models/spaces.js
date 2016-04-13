@@ -85,6 +85,7 @@ SpacesSchema.methods.getNextDepthNode = function(callback){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 SpacesSchema.methods.getChildTypes = function(callback){
     var promise = new mongoose.Promise;
     if (callback) promise.addBack(callback);   
@@ -101,6 +102,8 @@ SpacesSchema.methods.getChildTypes = function(callback){
 }
 
 =======
+=======
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 SpacesSchema.plugin(materializedPlugin);
 mongoose.model('Space', SpacesSchema);
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c

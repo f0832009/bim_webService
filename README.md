@@ -30,7 +30,11 @@ defalut config:
   host: '/node/mongo',
   models: '/models' 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ```  
+=======
+ ```  
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 =======
  ```  
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
@@ -51,6 +55,9 @@ post data example:
 
 post data example:
 
+<<<<<<< HEAD
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
+=======
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 ```json
 {
@@ -85,11 +92,14 @@ post data example:
             "name": "AR",
             "resourcePath": "./models/NTPC/AR/Resource/3D___/B3F/B3F.svf",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "remark": ""
         },{
             "name": "STR",
             "resourcePath": "./models/NTPC/STR/Resource/3D___/B3F/B3F.svf",
 =======
+=======
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
             "remark": ""
         },{
             "name": "STR",
@@ -98,6 +108,9 @@ post data example:
         },{
             "name": "MEP",
             "resourcePath": "./models/NTPC/MEP/Resource/3D___/B3F/B3F.svf",
+<<<<<<< HEAD
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
+=======
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
             "remark": ""
         },{
@@ -108,6 +121,7 @@ post data example:
     }] 
 }
 ```  
+<<<<<<< HEAD
 <<<<<<< HEAD
 ```   
     GET api/v1/spaces
@@ -202,6 +216,8 @@ example:
     api/v1/spaces/nodes?spaceType=Levels
 ```
 =======
+=======
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
     GET api/v1/originJsonData
     
 -   Get original tree structure data
@@ -219,6 +235,7 @@ example:
     parameter nodeId:mongodb objectId(12-byte hexadecimal value)
 
 -   Get any node in spaces collection by id field
+<<<<<<< HEAD
 
 example:
     GET api/v1/spaces/56f28e13877f2d2080000002
@@ -302,6 +319,66 @@ example:
 
 response data example:
 
+=======
+
+example:
+    GET api/v1/spaces/56f28e13877f2d2080000002
+    
+response data example:
+
+```json
+{
+    "id": "56f28e13877f2d2080000002",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "1F"
+}
+```    
+    GET api/v1/spaces/childtypes
+    
+-   Get all childType value in spaces collection
+
+response data example:
+```json
+[
+    "Levels",
+    "Layers"
+]
+```     
+    GET api/v1/spaces/nodes?childType={childTypeName}
+    
+    query parameter childTypeName:string
+    
+-   Get specify node by childTypeName
+
+example:
+
+    GET api/v1/spaces/nodes?childType=Levels
+
+response data example:
+
+```json
+[{
+    "id": "56f28e13877f2d2080000002",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "1F"    
+},{
+    "id": "56f28e13877f2d2080000003",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "2F"
+}]
+```  
+
+    GET api/v1/spaces/:nodeId/children?name={nodeName}    
+    
+    query parameter nodeName(optional):string
+    
+example:
+
+    GET api/v1/spaces/56f28e13877f2d2080000002/children
+
+response data example:
+
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 ```json
 [{
     "id": "56f28e13877f2d2080000007",
@@ -335,6 +412,9 @@ response data example:
     DELETE /spaces
     
 -   Remove all data.
+<<<<<<< HEAD
+>>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
+=======
 >>>>>>> 64717de8f5122c8dc140f9036b0d1a2c430c855c
 
 
