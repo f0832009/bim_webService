@@ -10,13 +10,6 @@ var SpacesSchema = new Schema({
     remark: String
 })
 
-SpacesSchema.plugin(materializedPlugin);
-
-SpacesSchema.statics.GetChildTypes = function(callback){    
-    return this.model('Space').find({childType: { $exists: true }}).distinct('childType').exec(callback);
-}
-
-
 /** 
  * static methods
 */
@@ -75,7 +68,7 @@ SpacesSchema.statics = {
     }
 }
 
-SpacesSchema.methods.getNextDepth = function(callback){
+SpacesSchema.methods.getNextDepthNode = function(callback){
     var promise = new mongoose.Promise;
     if (callback) promise.addBack(callback);
     
@@ -91,6 +84,7 @@ SpacesSchema.methods.getNextDepth = function(callback){
     return promise;
 }
 
+SpacesSchema.plugin(materializedPlugin);
 mongoose.model('Space', SpacesSchema);
 
 var model = mongoose.model('Space');

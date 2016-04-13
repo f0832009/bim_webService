@@ -23,11 +23,20 @@ module.exports = function(){
                 if(treeObjcet.children){
                     var children = treeObjcet.children;
                     //lack async
-                    children.forEach(function(childObject){                      
+                    async.each(children, function(childObject, callback){
                         var t = parentNode.appendChild(childObject).then(function(data){
                             recursive(childObject, data);
-                        })                        
+                            callback(null);
+                        })   
+                    },function(err){
+                        if(err) console.error(err);
+                        res.end('upload success');
                     })
+                    // children.forEach(function(childObject){                      
+                    //     var t = parentNode.appendChild(childObject).then(function(data){
+                    //         recursive(childObject, data);
+                    //     })                        
+                    // })
                 }
             }
             parse(treeData, savedNode);
@@ -49,12 +58,9 @@ module.exports = function(){
         }
     })
     
-    router.get('/getSpaces', function(req, res){
-        Space.GetRoot
-    })
     
     //query rule: childType
-    router.get('/children', function(req, res){
+    router.get('/nodes', function(req, res){
         req.assert('childType', 'error query').notEmpty();
         
         var errors = req.validationErrors();
@@ -64,27 +70,57 @@ module.exports = function(){
         }                
         var childType = req.query.childType;        
 
-        Space.GetNodesByChildType(childType).then(function(result){
-            res.end(JSON.stringify(result));
+        Space.GetNodesByChildType(childType).then(function(docs){            
+            async.concat(docs, function(doc, callback){
+                var node = {
+                    id: doc._id,                
+                    parent: doc.parentId,
+                    text: doc.name
+                }
+                callback(null, node);
+            }, function(err, result){
+                if(err) return console.error(err);
+                // console.log(result)
+                res.end(JSON.stringify(result));
+            })
         })
-})
+    })  
     
-    router.get('/children/:nodeId', function(req, res){        
-        var id = mongoose.Types.ObjectId(req.params.nodeId);
-
-        req.assert('limit', 'limit error').optional().isInt();
+    router.get('/:nodeId/children', function(req, res){       
+        
+        req.assert('name', 'error query').optional();
         var errors = req.validationErrors();
         if (errors) {
             res.end('There have been validation errors: ' + util.inspect(errors), 400);
             return;
         }
         
-        Space.GetNode(req.params.nodeId, function(err, doc){
-            doc.getNextDepth(function(err, docs){
-                res.end(JSON.stringify(docs));
-            })
-        })        
+        var nodeName = req.query.name;     
+        if(nodeName){
+            Space.GetNode(req.params.nodeId, function(err, doc){
+                doc.getNextDepthNode(function(err, docs){           
+                    async.detect(docs, function(doc, callback){                        
+                        callback(null, doc.name == nodeName);
+                    }, function(err, result){
+                        if(err || !result){
+                            res.end('none found');
+                            return console.error(err);
+                        } 
+                        res.end(JSON.stringify(result));
+                    })   
+                })
+            })  
+        }
+        else{           
+            Space.GetNode(req.params.nodeId, function(err, doc){
+                doc.getNextDepthNode(function(err, docs){
+                    res.end(JSON.stringify(docs));
+                })
+            })  
+        }      
     })
+    
+    
     
     router.get('/resourcePath/:nodeId/', function(req, res){        
         var id = mongoose.Types.ObjectId(req.params.nodeId);
@@ -108,13 +144,11 @@ module.exports = function(){
                     addresses = address.address;
                 }
             }
-        }    
-        
+        }        
         Space.GetNode(req.params.nodeId).then(function(doc){
             var resourcePath = doc.resourcePath.replace('.', addresses);
             res.send(resourcePath);
-        })
-            
+        })            
         
     })
     
@@ -129,17 +163,28 @@ module.exports = function(){
         })
     })
     
-    router.get('/:nodeId', function(req, res){        
-
-        Space.GetNode(req.params.nodeId, function(err, doc){
-            var reslut = {
-                id: doc._id,                
-                parent: doc.parentId,
-                text: doc.name
-            }
-            res.end(JSON.stringify(reslut));
+    router.get('/:nodeId', function(req, res, next){
+        if(req.params.nodeId == 'childtypes') next();
+        else{
+            Space.GetNode(req.params.nodeId, function(err, doc){
+                var reslut = {
+                    id: doc._id,                
+                    parent: doc.parentId,
+                    text: doc.name
+                }
+                res.end(JSON.stringify(reslut));
+            })
+        }
+    })    
+        
+    //get all childtype
+    router.get('/childtypes', function(req, res, next){        
+        Space.GetChildTypes(function(err, docs){
+            if(err) return console.error(err);                  
+            res.end(JSON.stringify(docs));
         })
-    })
+    })       
+    
     
     router.get('/treeJsonData', function(req, res){
         // req.query.params        
@@ -191,17 +236,7 @@ module.exports = function(){
             res.end(JSON.stringify(docs));            
         })        
     })   
-    
-    //get all childtype
-    router.get('/childTypes', function(req, res, next){          
-        
-        Space.GetChildTypes(function(err, docs){
-            if(err) return console.error(err);   
-               
-            res.end(JSON.stringify(docs));
-        })
-    })       
-    
+
     router.put('/', function(req, res){
         // not implement
         res.end('not implement');
@@ -211,7 +246,7 @@ module.exports = function(){
     router.delete('/', function(req, res){
         Space.remove({}, function(err){
             if(err) return console.error(err);
-            res.end('delete');
+            res.end('delete success');
         })
     })
     

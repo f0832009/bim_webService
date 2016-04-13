@@ -7,5 +7,6 @@ var config = {
   host: '/node/mongo',
   models: '/models'
 }
+//dasd
 
 module.exports = config;

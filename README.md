@@ -45,34 +45,42 @@ post data example:
     "remark": "",
     "childType": "Levels",
     "children": [{
-        "name": "1F",
-        "resourcePath": "./data/1F",
+        "name": "Foundation",
+        "resourcePath": "",
         "remark": "",       
         "childType": "Layers",
         "children":[{
             "name": "AR",
-            "resourcePath": "./data/1F/AR",
+            "resourcePath": "",
             "remark": ""       
         },{
             "name": "STR",
-            "resourcePath": "./data/1F/STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D_View/Foundation/Foundation.svf",
             "remark": ""            
+        },{
+            "name": "MEP",
+            "resourcePath": "",
+            "remark": "" 
         }]
     },{
-        "name": "2F",
-        "resourcePath": "./data/2F",
+        "name": "B3F",
+        "resourcePath": "",
         "remark": "",   
         "childType": "Layers",
         "children": [{
             "name": "AR",
-            "resourcePath": "./data/2F/AR",
+            "resourcePath": "./models/NTPC/AR/Resource/3D___/B3F/B3F.svf",
+            "remark": ""
+        },{
+            "name": "STR",
+            "resourcePath": "./models/NTPC/STR/Resource/3D___/B3F/B3F.svf",
             "remark": ""
         },{
             "name": "MEP",
-            "resourcePath": "./data/2F/MEP",
+            "resourcePath": "./models/NTPC/MEP/Resource/3D___/B3F/B3F.svf",
             "remark": ""
         }]    
-    }]    
+    }] 
 }
 ```  
     GET api/v1/originJsonData
@@ -105,9 +113,9 @@ response data example:
     "text": "1F"
 }
 ```    
-    GET api/v1/spaces/childTypes
+    GET api/v1/spaces/childtypes
     
--   Return all childType value in spaces collection
+-   Get all childType value in spaces collection
 
 response data example:
 ```json
@@ -115,29 +123,72 @@ response data example:
     "Levels",
     "Layers"
 ]
-``` 
-    
-    GET api/v1/spaces/children?childType={childTypeName}
+```     
+    GET api/v1/spaces/nodes?childType={childTypeName}
     
     query parameter childTypeName:string
     
--   Return specify node by childTypeName
+-   Get specify node by childTypeName
 
 example:
-    GET api/v1/spaces/children?childType=Levels
+
+    GET api/v1/spaces/nodes?childType=Levels
+
+response data example:
+
+```json
+[{
+    "id": "56f28e13877f2d2080000002",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "1F"    
+},{
+    "id": "56f28e13877f2d2080000003",
+    "parent": "56f28e13877f2d2080000001",
+    "text": "2F"
+}]
+```  
+
+    GET api/v1/spaces/:nodeId/children?name={nodeName}    
+    
+    query parameter nodeName(optional):string
+    
+example:
+
+    GET api/v1/spaces/56f28e13877f2d2080000002/children
+
+response data example:
+
+```json
+[{
+    "id": "56f28e13877f2d2080000007",
+    "parent": "56f28e13877f2d2080000002",
+    "text": "AR"    
+},{
+    "id": "56f28e13877f2d2080000008",
+    "parent": "56f28e13877f2d2080000002",
+    "text": "STR"    
+},{
+    "id": "56f28e13877f2d2080000009",
+    "parent": "56f28e13877f2d2080000002",
+    "text": "MEP"    
+}]
+```    
+    
+example2:
+
+    GET api/v1/spaces/56f28e13877f2d2080000002/children?name=STR
 
 response data example:
 
 ```json
 {
-    "id": "56f28e13877f2d2080000002",
-    "parent": "56f28e13877f2d2080000001",
-    "text": "1F"
+    "id": "56f28e13877f2d2080000007",
+    "parent": "56f28e13877f2d2080000002",
+    "text": "STR"    
 }
-```  
+``` 
     
-
-    DELETE /resources
+    DELETE /spaces
     
 -   Remove all data.
 
